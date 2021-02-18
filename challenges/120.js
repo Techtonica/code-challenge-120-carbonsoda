@@ -37,10 +37,21 @@
 // Implement groupBy. Use other existing functions on Array if you want.
 //
 
+// This could be implemented with reduce()
+// but this ver is a lot more direct/clear to anyone
 function groupBy(arr, logic){
-  return(
-    // replace this line with your code
-  );
+  let grouped = {};
+
+  for(let elem of arr){
+    let key = logic(elem);
+    // alternatively !grouped[key]
+    if(!(key in grouped)){
+      grouped[key] = [];
+    }
+    grouped[key].push(elem);
+  }
+
+  return grouped;
 }
 
 module.exports = groupBy;
